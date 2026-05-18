@@ -8,18 +8,18 @@ const COLORS = {
 
 function Dashboard() {
 
-  // const totals = {
-  //   balance: 5000,
-  //   income: 10000,
-  //   expense: 5000
-  // }
+  const totals = {
+    balance: 5000,
+    income: 10000,
+    expense: 5000
+  }
 
-  // const categoryData = [
-  //   { name: "Food", value: 400 },
-  //   { name: "Travel", value: 300 }
-  // ]
+  const categoryData = [
+    { name: "Food", value: 400 },
+    { name: "Travel", value: 300 }
+  ]
 
-  // const formatCurrency = (amount) => `₹${amount}`
+  const formatCurrency = (amount) => `₹${amount}`
 
   return (
     <div className='dashboard'>

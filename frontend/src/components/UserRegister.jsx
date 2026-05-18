@@ -34,10 +34,9 @@ function UserRegister(){
                         <label>Confirm Password:</label>
                         <input type="password" />
                     </div>
-
-                    <p className="switch-text"> Alredy have an account? <button className="link-btn"> Login </button></p>
                    
                     <button type="submit" className="submit-btn">Register</button>
+                    <p className="switch-text"> Alredy have an account? <button className="link-btn"> Login </button></p>
                 </form>
             </div>
 

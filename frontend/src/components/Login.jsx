@@ -19,8 +19,8 @@ function Login(){
                         <input type="password" />
                     </div>
 
-                    <p className="link-text">Don't have an account? <button className="link-btn"> Register </button> </p>
                     <button type="submit" className="submit-btn">Login</button>
+                    <p className="link-text">Don't have an account? <button className="link-btn"> Register </button> </p>
                 </form>
             </div>
         </div>
