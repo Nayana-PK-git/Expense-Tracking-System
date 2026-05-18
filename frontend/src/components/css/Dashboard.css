@@ -1,0 +1,74 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.summary-card{
+    display: grid;
+    grid-template-columns: repeat((auto-fit, minmax(200px, 1fr)));
+    gap: 1rem;
+}
+
+.card{
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card .balance{
+    border-top-color: #2563eb;
+}
+
+.card .income{
+    border-top-color: #16a34a;
+}
+
+.card .expense{
+    border-top-color: #dc2626;
+}
+
+.card-label{
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.card-amount{
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.charts-grid{
+    display: grid;
+    grid-template-columns: repeat((auto-fit, minmax(350px, 1fr)));
+    gap: 1.5rem;
+}
+
+.chart-container{
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3{
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+}
+
+@media screen and(max-width:768px){
+    .charts-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .card-amount{
+        font-size: 1.5rem;
+    }
+}

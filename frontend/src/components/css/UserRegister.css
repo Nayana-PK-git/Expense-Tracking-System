@@ -1,0 +1,117 @@
+.auth-container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem;
+}
+
+.auth-card{
+    background: #fff;
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0, 3);
+}
+
+.auth-card h1{
+    text-align: center;
+    color: #2563eb;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.auth-card h2{
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form-group{
+    margin-bottom: 1.25rem;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group input{
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus{
+    outline: none;
+    border-color: #2563eb;
+}
+
+.submit-btn{
+    width: 100%;
+    padding: 0.875rem;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s;
+}
+
+.submit-btn:hover:not(:disabled){
+    background: #1d4ed8;
+}
+
+.submit-btn:disabled{
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+.switch-text{
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.link-btn{
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 0.25rem;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+}
+
+.link-btn:hover{
+    color: #1d4ed8;
+}
+
+
+@media screen and (max-width:480px) {
+    .auth-card{
+        padding: 1.5rem;
+    }
+
+    .auth-card h1{
+        font-size: 1.5rem;
+    }
+
+    .auth-card h2{
+        font-size: 1.25rem;
+    }
+}
