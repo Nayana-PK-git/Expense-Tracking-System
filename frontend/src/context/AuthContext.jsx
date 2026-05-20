@@ -36,3 +36,5 @@ export function AuthProvider({ children}){
         const res=await fetch(`$API_URL`)
     }
 }
+
+export const useAuth = () => useContext(AuthContext)

@@ -4,5 +4,6 @@ const UserController=require('../controllers/UserController')
 
 router.post('/createuser',UserController.registerUser)
 router.post('/loginuser',UserController.userLogin)
+router.post('/logoutuser',UserController.userLogout)
 
 module.exports = router
