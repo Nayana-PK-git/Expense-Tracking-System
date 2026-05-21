@@ -72,5 +72,9 @@ const userLogout = async(req,res) => {
     res.status(201).json({msg:"Logged out"})
 }
 
+const getMe = async(req,res) => {
+    res.json({ user : req.user})
+}
 
-module.exports = {registerUser,userLogin,userLogout}
+
+module.exports = {registerUser,userLogin,userLogout,getMe}

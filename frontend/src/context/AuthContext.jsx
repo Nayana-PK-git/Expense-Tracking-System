@@ -1,40 +1,56 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { api } from '../Api/api'
 
 const AuthContext = createContext();
-const API_URL = import.meta.env.VITE_API_URL;
 
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if(!context){
+        throw new Error('useAuth must be used within AuthProvider')
+    }
+    return context
+}
 
-export function AuthProvider({ children}){
+export const AuthProvider = ({ children }) => {
     const [user,setUser] = useState(null);
     const [loading,setLoading] = useState(true)
 
     useEffect(()=>{
-        const token = localStorage.getItem('token')
-        if (token) loadUser(token);
-        else setLoading(false);
+        checkAuth();
     },[])
 
-    const loadUser = async(token)=>{
+    const checkAuth = async () => {
         try {
-            const res=await fetch(`${API_URL}/auth/me`,{
-                headers:{'Authorization':`Bearer ${token}`}
-            });
-            if(res.ok){
-                const userData = await res.json();
-                setUser(userData);
-            }else{
-                localStorage.removeItem('token');
-            }
+            const data = await api.get('/auth/me')
+            setUser(data.user)
         } catch (error) {
-            localStorage.removeItem('token')
+            setUser(null)
+        } finally {
+            setLoading(false)
         }
-        setLoading(false)
-    };
-
-
-    const login = async (email , password)=>{
-        const res=await fetch(`$API_URL`)
     }
+
+    const register = async(name,email,password) => {
+        const data = await api.post('/auth/registeruser')
+        setUser(data.user)
+    }
+
+    const login = async (email,password) => {
+        const data = await api.post('/auth/loginuser')
+        setUser(data.user)
+    }
+
+    const logout = async () => {
+        await api.post('/auth/logoutuser')
+        setUser(null)
+    }
+
+    const value = {user,loading,register,login,logout}
+
+    return (
+        <AuthProvider.Provider value = {value}>
+            {children}
+        </AuthProvider.Provider>
+    )
 }
 
-export const useAuth = () => useContext(AuthContext)
