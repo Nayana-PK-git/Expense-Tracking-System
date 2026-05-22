@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const data = await api.get('/auth/me')
+            const data = await api.get('/me')
             setUser(data.user)
         } catch (error) {
             setUser(null)
@@ -31,26 +31,26 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = async(name,email,password) => {
-        const data = await api.post('/auth/registeruser')
+        const data = await api.post('/registeruser')
         setUser(data.user)
     }
 
     const login = async (email,password) => {
-        const data = await api.post('/auth/loginuser')
+        const data = await api.post('/loginuser')
         setUser(data.user)
     }
 
     const logout = async () => {
-        await api.post('/auth/logoutuser')
+        await api.post('/logoutuser')
         setUser(null)
     }
 
     const value = {user,loading,register,login,logout}
 
     return (
-        <AuthProvider.Provider value = {value}>
+        <AuthContext.Provider value = {value}>
             {children}
-        </AuthProvider.Provider>
+        </AuthContext.Provider>
     )
 }
 
