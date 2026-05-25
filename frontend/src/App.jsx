@@ -1,18 +1,12 @@
 import React from 'react'
-import Dashboard from './components/Dashboard'
-import UserRegister from './components/UserRegister'
-import Login from './components/Login'
-import TransactionForm from './components/TransactionForm'
 import { ExpenseProvider } from './context/ExpenseContext'
-import { Routes,Route } from 'react-router-dom'
+import { RoutePath } from './components/Routes/route'
 
 
 const App = () => {
   return (
     <ExpenseProvider>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-      </Routes>
+      <RoutePath />
     </ExpenseProvider>
   )
 }

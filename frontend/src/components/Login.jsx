@@ -129,8 +129,7 @@ function Login(){
                         onChange={(e) => setPassword(e.target.value)} required/>
                   
                     {error && <ErrorMsg>{error}</ErrorMsg>}
-                    <Button type="submit" disabled = {loading}>{Loading ? 'Logging in ...' : 'Login'}</Button>
-                    <p className="link-text">Don't have an account? <button className="link-btn"> Register </button> </p>
+                    <Button type="submit" disabled = {loading}>{loading ? 'Logging in ...' : 'Login'}</Button>
                 </Form>
                 <AuthLink>Don't have an account? <Link to = "/register">Register</Link></AuthLink>
             </AuthCard>

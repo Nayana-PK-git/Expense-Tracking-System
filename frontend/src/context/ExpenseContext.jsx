@@ -33,9 +33,10 @@ const fetchTransactions = async() => {
     setLoading(true);
     setError('');
     try {
-        const data = await api.get('/transactions')
+        const data = await api.get('/transaction/getTransactions')
         setTransactions(data)
     } catch (error) {
+        console.log(error.config.url)
         setError(error.msg || 'Failed to fetch transactions')
     } finally {
         setLoading(false)
@@ -46,7 +47,7 @@ const addTransaction = async (transactionData) => {
     setLoading(true)
     setError('')
     try {
-        const data = await api.post('/transactions',transactionData)
+        const data = await api.post('/transaction/addTransaction',transactionData)
         setTransactions(prev => [data, ...prev])
         return data
     } catch (error) {
@@ -62,7 +63,7 @@ const deleteTransaction = async (id) => {
     setLoading(true)
     setError('')
     try {
-        await api.delete(`/transactions/${id}`)
+        await api.delete(`/transaction/deleteTransaction${id}`)
         setTransactions(prev => prev.filter(t => t._id!== id))
     } catch (error) {
         setError(error.msg || 'Failed to delete transaction')
@@ -77,7 +78,7 @@ const updateTransaction = async (id, updateData) => {
     setLoading(true)
     setError('')
     try {
-        const data = await api.put(`/transactions/${id}`,updateData)
+        const data = await api.put(`/transaction/updateTransaction${id}`,updateData)
         setTransactions(prev => prev.map(t => t._id === id ? data :t))
         return data
     } catch (error) {
@@ -139,7 +140,7 @@ const value = {
 }
 return(
     <ExpenseContext.Provider value={value}>
-        {Children}
+        {children}
     </ExpenseContext.Provider>
 )
 }
