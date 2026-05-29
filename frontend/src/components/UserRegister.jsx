@@ -138,7 +138,7 @@ function UserRegister(){
         setLoading(true)
         try {
             await register(formData.name, formData.email, formData.password)
-            navigate('/')
+            navigate('/dashboard')
         } catch (error) {
             setError(error.response?.data?.msg || 'Registration failed')
         } finally {

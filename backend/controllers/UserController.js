@@ -6,12 +6,12 @@ const saltround = 10
 
 const registerUser = async(req,res)=>{
     try{
-        const{name,email,password,confirmpassword}=req.body
+        const{name,email,password}=req.body
         console.log('Register request:',req.body);
         
-        if(password !== confirmpassword){
-            return res.status(400).json({msg:"password does not match"})
-        }
+        // if(password !== confirmpassword){
+        //     return res.status(400).json({msg:"password does not match"})
+        // }
 
         if(password.length <6){
             return res.status(400).json({msg:"password has atleast 6 characters"})

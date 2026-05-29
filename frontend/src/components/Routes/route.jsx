@@ -11,8 +11,8 @@ export const RoutePath = () => {
   return (
     <>
     <Routes>
-        <Route path='/' element={<Dashboard />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/' element={<Login />} />
         <Route path='/navbar' element={<Navbar />} />
         <Route path='/transactionform' element={<TransactionForm />} />
         <Route path='/transactionlist' element={<TransactionList />} />
