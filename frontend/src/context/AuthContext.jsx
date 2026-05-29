@@ -31,12 +31,12 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = async(name,email,password) => {
-        const data = await api.post('/user/registeruser')
+        const data = await api.post('/user/registeruser',{name,email,password})
         setUser(data.user)
     }
 
     const login = async (email,password) => {
-        const data = await api.post('/user/loginuser')
+        const data = await api.post('/user/loginuser',{email, password})
         setUser(data.user)
     }
 

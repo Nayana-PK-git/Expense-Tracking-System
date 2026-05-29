@@ -6,7 +6,16 @@ const saltround = 10
 
 const registerUser = async(req,res)=>{
     try{
-        const{name,email,password}=req.body
+        const{name,email,password,confirmpassword}=req.body
+        console.log('Register request:',req.body);
+        
+        if(password !== confirmpassword){
+            return res.status(400).json({msg:"password does not match"})
+        }
+
+        if(password.length <6){
+            return res.status(400).json({msg:"password has atleast 6 characters"})
+        }
         const user = await User.findOne({email})
         if(user){
             return res.status(400).json({msg:"User already exist"})
@@ -15,10 +24,10 @@ const registerUser = async(req,res)=>{
         const userdata = await new User({
             name,
             email,
-            password:hashedpassword
+            password:hashedpassword,
         })
         await userdata.save()
-        const token = jwt.sign({id:user._id,name:user.name},process.env.SECRET_KEY,{expiresIn:'1h'})
+        const token = jwt.sign({id:userdata._id,name:userdata.name},process.env.JWT_SECRET,{expiresIn:'1h'})
 
         res.cookie("token",token, {
             httpOnly:true,
@@ -28,6 +37,8 @@ const registerUser = async(req,res)=>{
         })
         res.status(201).json({msg:"user created successfully"})
     }catch(error){
+        console.log('register error',error);
+        
         res.status(500).json({msg:"server error"})
     }
 }
@@ -37,6 +48,8 @@ const registerUser = async(req,res)=>{
 const userLogin = async(req,res)=>{    
     try {
         const{email,password}=req.body
+        console.log('Login attempt for:',email);
+        
         const user = await User.findOne({email})
         console.log(user);
         
@@ -49,7 +62,7 @@ const userLogin = async(req,res)=>{
         if(!Matchpassword){
             return res.status(404).json({msg:"Invalid password"})
         }
-        const token = jwt.sign({id:user._id,name:user.name},process.env.SECRET_KEY,{expiresIn:'1h'})
+        const token = jwt.sign({id:user._id,name:user.name},process.env.JWT_SECRET,{expiresIn:'1h'})
 
         //setting cookie
         res.cookie("token",token, {

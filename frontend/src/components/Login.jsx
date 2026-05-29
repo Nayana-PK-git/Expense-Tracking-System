@@ -9,79 +9,99 @@ const AuthWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f3f4f6;
-    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
 `
 
 const AuthCard = styled.div`
     background: #fff;
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 40px;
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 
     h2 {
         text-align: center;
-        color: #1f2937;
-        margin-bottom: 1.5rem;
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 30px;
     }
 `
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
 `
 
 const Input = styled.input`
-    padding: 0.75rem;
-    border: 2px solid #e5e7eb;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 15px;
+    transition: all 0.3s ease;
 
     &:focus {
         outline: none;
-        border-color: #2563eb;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    &::placeholder {
+        color: #999;
     }
 `
 
 const Button = styled.button`
     padding: 0.75rem;
-    background: #2563eb;
-    color: #fff;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    margin-top: 8px;
 
-    &:hover {
-        background: #1d4ed8;
+    &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
     }
 
     &:disabled {
-        background: #9ca3af;
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 `
 
 const ErrorMsg = styled.div`
-    background: #fef2f2;
-    color: #dc2626;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    color: #e53e3e;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    background: #fff5f5;
+    border-radius: 6px;
+    border: 1px solid #fed7d7;
 `
 
 const AuthLink = styled.div`
     text-align: center;
-    margin-top: 1rem;
-    color: #6b7280;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
 
     a {
-        color: #2563eb;
+        color: #667eea;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 `
 
@@ -114,16 +134,16 @@ function Login(){
                 <h2>Login</h2>
 
                 <Form onSubmit={handleSubmit}>
-                    
-                        <label>Email:</label>
-                        <Input type="email" 
+                        <Input 
+                        type="email"
+                        name="email" 
                         placeholder="Email" 
                         value={email} 
                         onChange={(e) => setEmail(e.target.value)} required/>
 
-                   
-                        <label>Password:</label>
-                        <Input type="password" 
+                        <Input 
+                        type="password"
+                        name="password" 
                         placeholder="Password" 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} required/>
